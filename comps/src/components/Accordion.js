@@ -4,12 +4,20 @@ import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 function Accordion({ items }) {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
-  const handleClick = (index) => {
-    if (index === expandedIndex) {
-      setExpandedIndex(-1);
-    } else {
-      setExpandedIndex(index);
-    }
+  const handleClick = (nextIndex) => {
+    setExpandedIndex((currentExpandedIndex) => {
+      if (currentExpandedIndex === nextIndex) {
+        setExpandedIndex(-1);
+      } else {
+        setExpandedIndex(nextIndex);
+      }
+    });
+
+    // if (index === expandedIndex) {
+    //   setExpandedIndex(-1);
+    // } else {
+    //   setExpandedIndex(nextIndex);
+    // }
   };
 
   const renderedItems = items.map((item, index) => {
